@@ -6,15 +6,16 @@ base = declarative_base()
 class GrammyAward(base):
     __tablename__ = 'grammy_awards'
 
+    ID = Column(Integer, primary_key=True)
     year = Column(Integer, nullable=False)
-    title = Column(String(200), nullable=False)
+    title = Column(String, nullable=False)
     published_at = Column(DateTime, nullable=False)
     updated_at = Column(DateTime, nullable=False)
-    category = Column(String(100), nullable=False)
-    nominee = Column(String(200), nullable=False)
-    artist = Column(String(200), nullable=False)
-    workers = Column(String(500), nullable=False)
-    img = Column(String(500), nullable=False)
+    category = Column(String, nullable=False)
+    nominee = Column(String, nullable=True)
+    artist = Column(String, nullable=True)
+    workers = Column(String, nullable=True)
+    img = Column(String, nullable=True)
     winner = Column(Boolean, nullable=False)
 
     def __str__(self):
