@@ -21,7 +21,7 @@ def extract_spotify(**kwargs):
         logging.error(f"Error extracting Spotify data: {e}")
         return None
     kwargs["ti"].xcom_push(key ='Spotify_data',value=json_data.to_json(orient='records'))
-    return json_data
+    return json_data.to_json(orient='records')
 
 
 def transform_spotify(**kwargs):
@@ -48,7 +48,7 @@ def transform_spotify(**kwargs):
     return transformed_data
 
 
-def extract_grammy():
+def extract_grammy(**kwargs):
     logging.info("Starting data extraction for Grammy")
     try:
         json_data = read_grammy_db()
@@ -59,13 +59,17 @@ def extract_grammy():
     except Exception as e:
         logging.error(f"Error extracting Grammy data: {e}")
         return None
-    return json_data
+    
+    kwargs["ti"].xcom_push(key ='Grammy_data',value=json_data.to_json(orient='records'))
+    return json_data.to_json(orient='records')
 
 
 def transform_grammy(**kwargs):
     logging.info("Transforming Grammy data")
     ti = kwargs["ti"]
-    str_data = ti.xcom_pull(task_ids="read_grammy")
+    logging.info(kwargs)
+
+    str_data = ti.xcom_pull(task_ids="read_grammy", key='Grammy_data')
     
     if str_data is None:
         logging.error("No data to transform.")
@@ -93,7 +97,7 @@ def merge_data(**kwargs):
     
     str_data_grammy = ti.xcom_pull(task_ids="transform_grammy")
     str_data_spotify = ti.xcom_pull(task_ids="transform_spotify")
-    
+
     if str_data_grammy is None or str_data_spotify is None:
         logging.error("No data to merge.")
         return None
@@ -106,9 +110,10 @@ def merge_data(**kwargs):
 
     merge_data = MergeData(grammy_df, spotify_df)
     merged_df = merge_data.merge()
-    
     logging.info(f"Merged data ready: {merged_df.head()}")
-    return merged_df
+    kwargs["ti"].xcom_push(key ='Merged_data',value=merged_df.to_json(orient='records'))
+    
+    return merged_df.to_json(orient='records')
 
 def load_data_to_db(**kwargs):
     logging.info("Starting load process")

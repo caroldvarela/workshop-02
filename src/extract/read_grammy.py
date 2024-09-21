@@ -43,11 +43,11 @@ def read_grammy_db():
 
     try:
 
-        df = TransformGrammy('./data/the_grammy_awards.csv')
-        
-        df.insert_ids()
-        
-        return df.df.to_json(orient='records')
+        df = pd.read_csv('./data/the_grammy_awards.csv',sep=',', encoding='utf-8')
+        transformer = TransformGrammy(df)
+        transformer.insert_ids()
+
+        return transformer.df
 
     except Exception as e:
         print(f"An error occurred: {e}")

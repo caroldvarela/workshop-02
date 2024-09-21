@@ -23,7 +23,7 @@ class GrammyAward(base):
         return f"Grammy({attributes})"
 
 class MergedDAta(base):
-    __tablename__ = ''
+    __tablename__ = 'merged_df'
 
     ID = Column(Integer, primary_key=True)
     track_id = Column(String, nullable=False) 

@@ -15,7 +15,7 @@ work_dir = os.getenv('WORK_DIR')
 sys.path.append(work_dir)
 
 
-def load_data():
+def load_data(df):
     engine = build_engine()
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -43,10 +43,7 @@ def load_data():
 
     try:
 
-        df = TransformGrammy('../data/the_grammy_awards.csv')
-        
-        df.insert_ids()
-        
+        df.df.to_sql('merged_df', engine, if_exists='append', index=False)
         return df.df.to_json(orient='records')
 
     except Exception as e:
