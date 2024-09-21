@@ -42,8 +42,9 @@ def load_data(df):
         return None
 
     try:
-        df.df.to_sql('merged_df', engine, if_exists='append', index=False)
-        return df.df.to_json(orient='records')
+        with engine.connect() as connection:
+            df.df.to_sql('merged_df', engine, if_exists='append', index=False)
+        return df
 
     except Exception as e:
         print(f"An error occurred: {e}")

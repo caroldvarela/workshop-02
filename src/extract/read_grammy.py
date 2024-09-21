@@ -46,7 +46,8 @@ def read_grammy_db():
         df = pd.read_csv('./data/the_grammy_awards.csv', sep=',', encoding='utf-8')
         transformer = TransformGrammy(df)
         transformer.insert_ids()
-        transformer.df.to_sql('grammy_awards', con=connection, if_exists='append', index=False)
+        with engine.connect() as connection:
+            transformer.df.to_sql('grammy_awards', con=connection, if_exists='append', index=False)
         return transformer.df
 
 
