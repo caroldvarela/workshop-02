@@ -42,7 +42,6 @@ def load_data(df):
         return None
 
     try:
-
         df.df.to_sql('merged_df', engine, if_exists='append', index=False)
         return df.df.to_json(orient='records')
 

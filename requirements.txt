@@ -98,7 +98,7 @@ methodtools==0.4.7
 more-itertools==10.5.0
 multidict==6.1.0
 nest-asyncio==1.6.0
-numpy==2.1.1
+numpy==1.26.4
 opentelemetry-api==1.27.0
 opentelemetry-exporter-otlp==1.27.0
 opentelemetry-exporter-otlp-proto-common==1.27.0
@@ -109,7 +109,7 @@ opentelemetry-sdk==1.27.0
 opentelemetry-semantic-conventions==0.48b0
 ordered-set==4.1.0
 packaging==24.1
-pandas==2.2.2
+pandas==2.1.4
 parso==0.8.4
 pathspec==0.12.1
 pendulum==3.0.0

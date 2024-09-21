@@ -131,9 +131,10 @@ def load_data_to_db(**kwargs):
     logging.info("Loading data")
 
     try:
-        load_data(data) 
+        loaded_data = load_data(data) 
         logging.info("Data loaded successfully into: table_name")
     except Exception as e:
         logging.error(f"Error loading data: {e}")
     
-    logging.info("Data loaded successfully into: table_name")
+    kwargs["ti"].xcom_push(key ='Loaded_data',value=loaded_data.to_json(orient='records'))
+    return loaded_data.to_json(orient='records')

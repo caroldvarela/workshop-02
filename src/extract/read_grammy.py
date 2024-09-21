@@ -43,11 +43,12 @@ def read_grammy_db():
 
     try:
 
-        df = pd.read_csv('./data/the_grammy_awards.csv',sep=',', encoding='utf-8')
+        df = pd.read_csv('./data/the_grammy_awards.csv', sep=',', encoding='utf-8')
         transformer = TransformGrammy(df)
         transformer.insert_ids()
-
+        transformer.df.to_sql('grammy_awards', con=connection, if_exists='append', index=False)
         return transformer.df
+
 
     except Exception as e:
         print(f"An error occurred: {e}")
