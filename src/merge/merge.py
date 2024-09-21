@@ -1,8 +1,8 @@
 import pandas as pd
 
 class MergeData:
-    def __init__(self, grammy_filepath, spotify_df):
-        self.df_grammy = pd.read_csv(grammy_filepath, sep=',', encoding='utf-8')
+    def __init__(self, grammy_df, spotify_df):
+        self.df_grammy = grammy_df
         self.spotify_df = spotify_df
 
     def merge(self):

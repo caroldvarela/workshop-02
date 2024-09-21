@@ -43,7 +43,7 @@ def read_grammy_db():
 
     try:
 
-        df = TransformGrammy('../data/the_grammy_awards.csv')
+        df = TransformGrammy('./data/the_grammy_awards.csv')
         
         df.insert_ids()
         

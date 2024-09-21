@@ -9,7 +9,7 @@ from src.merge.merge import MergeData
 from src.load.load_to_database import load_data
 
 
-def extract_spotify():
+def extract_spotify(**kwargs):
     logging.info("Starting data extraction for Spotify")
     try:
         json_data = read_spotify_csv()
@@ -20,13 +20,16 @@ def extract_spotify():
     except Exception as e:
         logging.error(f"Error extracting Spotify data: {e}")
         return None
+    kwargs["ti"].xcom_push(key ='Spotify_data',value=json_data.to_json(orient='records'))
     return json_data
 
 
 def transform_spotify(**kwargs):
     logging.info("Transforming Spotify data")
     ti = kwargs["ti"]
-    str_data = ti.xcom_pull(task_ids="extract_spotify")
+    logging.info(kwargs)
+
+    str_data = ti.xcom_pull(task_ids="read_spotify", key='Spotify_data')
     
     if str_data is None:
         logging.error("No data to transform.")
@@ -62,7 +65,7 @@ def extract_grammy():
 def transform_grammy(**kwargs):
     logging.info("Transforming Grammy data")
     ti = kwargs["ti"]
-    str_data = ti.xcom_pull(task_ids="extract_grammy")
+    str_data = ti.xcom_pull(task_ids="read_grammy")
     
     if str_data is None:
         logging.error("No data to transform.")
@@ -101,7 +104,7 @@ def merge_data(**kwargs):
     grammy_df = pd.json_normalize(data=json_data_grammy)
     spotify_df = pd.json_normalize(data=json_data_spotify)
 
-    merge_data = MergeData('grammy_cleaned.csv', spotify_df)
+    merge_data = MergeData(grammy_df, spotify_df)
     merged_df = merge_data.merge()
     
     logging.info(f"Merged data ready: {merged_df.head()}")

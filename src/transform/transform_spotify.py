@@ -2,8 +2,8 @@ import pandas as pd
 
 class TransformSpotify:
 
-    def __init__(self, file):
-        self.df = pd.read_csv(file, sep=';', encoding='utf-8')
+    def __init__(self, df):
+        self.df = df
 
     def unnamed_to_id(self):
             self.df.rename(columns={'Unnamed: 0': 'ID'}, inplace=True)
