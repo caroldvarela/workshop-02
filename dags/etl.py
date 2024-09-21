@@ -112,13 +112,12 @@ def merge_data(**kwargs):
     merged_df = merge_data.merge()
     logging.info(f"Merged data ready: {merged_df.head()}")
     kwargs["ti"].xcom_push(key ='Merged_data',value=merged_df.to_json(orient='records'))
-    
     return merged_df.to_json(orient='records')
 
 def load_data_to_db(**kwargs):
     logging.info("Starting load process")
     ti = kwargs["ti"]
-    str_data = ti.xcom_pull(task_ids="merge_data")
+    str_data = ti.xcom_pull(task_ids="merge")
     
     if str_data is None:
         logging.error("No data to load.")
