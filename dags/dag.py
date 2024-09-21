@@ -42,7 +42,7 @@ with DAG(
 
   read_spotify_task = PythonOperator(
       task_id='read_spotify',
-      python_callable=read_spotify,
+      python_callable=extract_spotify,
       provide_context=True,
   )
 
@@ -60,7 +60,7 @@ with DAG(
 
   read_grammy_task = PythonOperator(
       task_id='read_grammy',
-      python_callable=read_grammy,
+      python_callable=extract_grammy,
       provide_context=True,
   )
 
@@ -75,10 +75,15 @@ with DAG(
 
 
 
+  merge_task = PythonOperator(
+      task_id='merge',
+      python_callable=merge_data,
+      provide_context=True,
+  )
 
   load_task = PythonOperator(
       task_id='load',
-      python_callable=load,
+      python_callable=load_data_to_db,
       provide_context=True,
   )
 
@@ -87,5 +92,6 @@ with DAG(
 
   read_spotify_task >> transform_spotify_task
   read_grammy_task >> transform_grammy_task
-  transform_spotify_task >> load_task
-  transform_grammy_task >> load_task
+  transform_spotify_task >> merge_task
+  transform_grammy_task >> merge_task
+  merge_task >> load_task

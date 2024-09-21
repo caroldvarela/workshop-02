@@ -2,18 +2,18 @@ import sys
 import os
 from dotenv import load_dotenv
 import pandas as pd
-
-load_dotenv()
-work_dir = os.getenv('WORK_DIR')
-
-sys.path.append(work_dir)
-
 from db.db_connection import build_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import inspect
 from models.model import GrammyAward
 from sqlalchemy.exc import SQLAlchemyError
 from src.transform.transform_grammy import TransformGrammy
+
+load_dotenv()
+work_dir = os.getenv('WORK_DIR')
+
+sys.path.append(work_dir)
+
 
 def read_grammy_db():
     engine = build_engine()

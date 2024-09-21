@@ -6,7 +6,7 @@ class TransformSpotify:
         self.df = pd.read_csv(file, sep=';', encoding='utf-8')
 
     def unnamed_to_id(self):
-            self.df.rename(columns={'Unnamed: 0': 'id'}, inplace=True)
+            self.df.rename(columns={'Unnamed: 0': 'ID'}, inplace=True)
     
     def drop_nan_records(self):
         nan_record_index = self.df[self.df.isna().any(axis=1)].index
