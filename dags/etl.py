@@ -131,7 +131,7 @@ def load_data_to_db(**kwargs):
 
     try:
         loaded_data = load_data(data) 
-        logging.info("Data loaded successfully into: table_name")
+        logging.info("Data loaded successfully into: merged_data")
     except Exception as e:
         logging.error(f"Error loading data: {e}")
     

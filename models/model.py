@@ -23,7 +23,7 @@ class GrammyAward(base):
         return f"Grammy({attributes})"
 
 class MergedDAta(base):
-    __tablename__ = 'merged_df'
+    __tablename__ = 'merged_data'
 
     ID = Column(Integer, primary_key=True)
     track_id = Column(String, nullable=False) 
@@ -49,7 +49,6 @@ class MergedDAta(base):
     grammy_winner = Column(Boolean, nullable=False, default=False)
     grammy_year = Column(Integer, nullable=True)
     number_wins = Column(Integer, nullable=True, default=0)
-    artists_trimmed = Column(String, nullable=True)
 
     def __str__(self):
         attributes = ", ".join(f"{key}={value}" for key, value in self.__dict__.items())

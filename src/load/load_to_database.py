@@ -6,6 +6,7 @@ from db.db_connection import build_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import inspect
 from models.model import GrammyAward
+from models.model import MergedDAta
 from sqlalchemy.exc import SQLAlchemyError
 from src.transform.transform_grammy import TransformGrammy
 
@@ -25,13 +26,13 @@ def load_data(df):
 
         if inspector.has_table('merged_data'):
             try:
-                GrammyAward.__table__.drop(engine)
+                MergedDAta.__table__.drop(engine)
             except SQLAlchemyError as e:
                 print(f"Error dropping table: {e}")
                 raise
 
         try:
-            GrammyAward.__table__.create(engine)
+            MergedDAta.__table__.create(engine)
             print("Table creation was successful.")
         except SQLAlchemyError as e:
             print(f"Error creating table: {e}")
@@ -43,7 +44,7 @@ def load_data(df):
 
     try:
         with engine.connect() as connection:
-            df.df.to_sql('merged_df', engine, if_exists='append', index=False)
+            df.to_sql('merged_data', engine, if_exists='append', index=False)
         return df
 
     except Exception as e:
