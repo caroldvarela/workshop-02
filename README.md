@@ -117,7 +117,7 @@ I will also give you a brief guide on how to install what you need!
    sudo apt install pgadmin4
 
 
-# Install and Configure Google Drive API
+# Configure Google Drive API
 
 - **Go to the Google Cloud Console:**
    - Navigate to [Google Cloud Console](https://console.cloud.google.com/).
