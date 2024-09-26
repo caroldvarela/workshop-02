@@ -117,6 +117,29 @@ I will also give you a brief guide on how to install what you need!
    sudo apt install pgadmin4
 
 
+# Install and Configure Google Drive API
+
+- **Go to the Google Cloud Console:**
+   - Navigate to [Google Cloud Console](https://console.cloud.google.com/).
+
+- **Create a New Project:**
+   - Click on the project dropdown and select "New Project."
+
+- **Enable the Google Drive API:**
+   - In the API Library, search for "Google Drive API" and enable it.
+
+- **Create OAuth 2.0 Client IDs Credentials:**
+   - Go to the "Credentials" tab and click on "Create Credentials."
+   - Select "OAuth client ID."
+   - Configure the consent screen if prompted, then choose "Desktop app" or the appropriate option for your use case.
+
+- **Download the `credentials.json` File:**
+   - Once created, download the credentials file and rename it to `service_account.json`.
+
+- **Place the File in the Project Directory:**
+   - Move the `service_account.json` file to your project directory.
+  
+
 ## Configuration of the .env File
 
 - **Create a .env File**  
