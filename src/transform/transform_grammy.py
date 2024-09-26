@@ -32,6 +32,10 @@ class TransformGrammy:
             if len(group) > 2:
                 self.df.loc[group.index[0], 'winner'] = True
                 self.df.loc[group.index[1:], 'winner'] = False
+                
+    def normalize_data(self):
+        for col in self.df.select_dtypes(include=['object']):
+            self.df[col] = self.df[col].str.title().str.strip()
 
     def filter_winners(self):
         self.df = self.df[self.df['winner'] == True] #

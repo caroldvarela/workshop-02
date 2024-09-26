@@ -85,6 +85,7 @@ def transform_grammy(**kwargs):
     transformer.extract_artists()
     transformer.remove_parentheses_from_artists()
     transformer.mark_winners()
+    transformer.normalize_data()
     transformer.filter_winners()
     
     transformed_data = transformer.df.to_json(orient='records')
