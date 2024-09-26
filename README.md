@@ -3,6 +3,8 @@
 # Introduction
 This project demonstrates how to build an ETL (Extract, Transform, Load) pipeline using **Apache Airflow**. The ETL pipeline extracts information from three different data sources: a **CSV file**, and a **PostgreSQL database**. After performing transformations, the data is merged and stored into **Google Drive** as a CSV file and loaded in a database. The final step involves creating a **dashboard** to visualize the data stored in the database.
 
+![image](https://github.com/caroldvarela/images/blob/main/workshop2.png)
+
 ## Data Sources
 1. **Spotify Dataset**: Data to be extracted, transformed, and loaded using Python and Apache Airflow.
 2. **Grammys Dataset**: To be loaded into the database, read, transformed, and merged with the Spotify dataset using Airflow.
