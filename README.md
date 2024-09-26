@@ -215,4 +215,4 @@ Do you want to create your own dashboard? You’ll probably need to do this:
     - Select the authentication method "Database" and enter your PostgreSQL username and password.
    ![image](https://github.com/caroldvarela/images/blob/main/workshop2-2.png)
 12. **Load Data:**
-    - Click "OK," and if the connection is successful, you will see the available tables in your database. Select the tables you want to import and click "Load."
+    - Click "Connect" and if the connection is successful, you will see the available tables in your database. Select the tables you want to import and click "Load."
