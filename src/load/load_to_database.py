@@ -44,6 +44,7 @@ def load_data(df):
 
     try:
         with engine.connect() as connection:
+            df.drop_duplicates(subset='ID', inplace=True)
             df.to_sql('merged_data', engine, if_exists='append', index=False)
         return df
 

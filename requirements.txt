@@ -58,6 +58,7 @@ Flask-WTF==1.2.1
 fonttools==4.53.1
 frozenlist==1.4.1
 fsspec==2024.9.0
+fuzzywuzzy==0.18.0
 google-api-core==2.20.0
 google-api-python-client==2.147.0
 google-auth==2.35.0
@@ -88,6 +89,7 @@ jupyter_client==8.6.2
 jupyter_core==5.7.2
 kiwisolver==1.4.7
 lazy-object-proxy==1.10.0
+Levenshtein==0.26.0
 limits==3.13.0
 linkify-it-py==2.0.3
 lockfile==0.12.2
@@ -144,11 +146,13 @@ python-daemon==3.0.1
 python-dateutil==2.9.0.post0
 python-decouple==3.8
 python-dotenv==1.0.1
+python-Levenshtein==0.26.0
 python-nvd3==0.16.0
 python-slugify==8.0.4
 pytz==2024.2
 PyYAML==6.0.2
 pyzmq==26.2.0
+RapidFuzz==3.10.0
 redis==5.0.8
 referencing==0.35.1
 requests==2.32.3

@@ -14,7 +14,7 @@ class TransformGrammy:
         self.df['ID'] = range(1, len(self.df) + 1)
     
     def remove_unwanted_grammmy_columns(self):
-        self.df.drop(columns=['published_at', 'updated_at'])
+        self.df.drop(columns=['published_at', 'updated_at', 'img'])
 
     def remove_na_nominees(self):
         self.df = self.df.dropna(subset=['nominee'])
