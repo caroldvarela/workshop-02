@@ -7,21 +7,22 @@ from src.transform.transform_grammy import TransformGrammy
 from src.transform.transform_spotify import TransformSpotify
 from src.merge.merge import MergeData
 from src.load.load_to_database import load_data
-
+from src.store.store import authenticate, upload_file
+import io
 
 def extract_spotify(**kwargs):
     logging.info("Starting data extraction for Spotify")
     try:
-        json_data = read_spotify_csv()
-        if json_data is None:
+        spotify_data = read_spotify_csv()
+        if spotify_data is None:
             logging.error("Failed to extract Spotify data.")
             return None
         logging.info("Spotify data extracted successfully.")
     except Exception as e:
         logging.error(f"Error extracting Spotify data: {e}")
         return None
-    kwargs["ti"].xcom_push(key ='Spotify_data',value=json_data.to_json(orient='records'))
-    return json_data.to_json(orient='records')
+    kwargs["ti"].xcom_push(key ='Spotify_data',value=spotify_data.to_json(orient='records'))
+    return spotify_data.to_json(orient='records')
 
 
 def transform_spotify(**kwargs):
@@ -51,8 +52,8 @@ def transform_spotify(**kwargs):
 def extract_grammy(**kwargs):
     logging.info("Starting data extraction for Grammy")
     try:
-        json_data = read_grammy_db()
-        if json_data is None:
+        grammy_data = read_grammy_db()
+        if grammy_data is None:
             logging.error("Failed to extract Grammy data.")
             return None
         logging.info("Grammy data extracted successfully.")
@@ -60,8 +61,8 @@ def extract_grammy(**kwargs):
         logging.error(f"Error extracting Grammy data: {e}")
         return None
     
-    kwargs["ti"].xcom_push(key ='Grammy_data',value=json_data.to_json(orient='records'))
-    return json_data.to_json(orient='records')
+    kwargs["ti"].xcom_push(key ='Grammy_data',value=grammy_data.to_json(orient='records'))
+    return grammy_data.to_json(orient='records')
 
 
 def transform_grammy(**kwargs):
@@ -137,3 +138,33 @@ def load_data_to_db(**kwargs):
     
     kwargs["ti"].xcom_push(key ='Loaded_data',value=loaded_data.to_json(orient='records'))
     return loaded_data.to_json(orient='records')
+
+
+def store_drive(**kwargs):
+    logging.info("Starting store process")
+    ti = kwargs["ti"]
+    str_data = ti.xcom_pull(task_ids="load")
+    
+    if str_data is None:
+        logging.error("No data to store.")
+        return None
+    
+    json_data = json.loads(str_data)
+    data = pd.json_normalize(data=json_data)
+    
+    logging.info(f"Data to store is: {data}")
+    logging.info("Storing data")
+
+    csv_buffer = io.StringIO()
+    data.to_csv(csv_buffer, index=False)
+    csv_bytes = csv_buffer.getvalue().encode('utf-8')
+
+    try:
+        stored_data = upload_file(csv_bytes) 
+        logging.info("Data stored successfully")
+    except Exception as e:
+        logging.error(f"Error storing data: {e}")
+    
+    kwargs["ti"].xcom_push(key ='Stored_data',value=stored_data.to_json(orient='records'))
+    return stored_data.to_json(orient='records')
+

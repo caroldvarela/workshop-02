@@ -21,8 +21,8 @@ default_args = {
   'email': ['airflow@example.com'],
   'email_on_failure': False,
   'email_on_retry': False,
-  'retries': 1,
-  'retry_delay': timedelta(minutes=1)
+  'retries': 5,
+  'retry_delay': timedelta(minutes=2)
 }
 
 
@@ -80,6 +80,12 @@ with DAG(
 
   )
 
+  store_task = PythonOperator(
+      task_id='store',
+      python_callable=store_drive,
+
+  )
+
 
 
 
@@ -88,3 +94,4 @@ with DAG(
   transform_spotify_task >> merge_task
   transform_grammy_task >> merge_task
   merge_task >> load_task
+  load_task >> store_task
