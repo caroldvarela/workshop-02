@@ -165,6 +165,4 @@ def store_drive(**kwargs):
     except Exception as e:
         logging.error(f"Error storing data: {e}")
     
-    kwargs["ti"].xcom_push(key ='Stored_data',value=stored_data.to_json(orient='records'))
-    return stored_data.to_json(orient='records')
 

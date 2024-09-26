@@ -89,9 +89,6 @@ with DAG(
 
 
 
-  read_spotify_task >> transform_spotify_task
-  read_grammy_task >> transform_grammy_task
-  transform_spotify_task >> merge_task
-  transform_grammy_task >> merge_task
-  merge_task >> load_task
-  load_task >> store_task
+  read_spotify_task >> transform_spotify_task >> merge_task >> load_task >> store_task
+  read_grammy_task >> transform_grammy_task >> merge_task
+ 
