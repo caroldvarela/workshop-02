@@ -1,4 +1,4 @@
-# workshop-02
+# Workshop # 2 ETL
 
 # Introduction
 This project demonstrates how to build an ETL (Extract, Transform, Load) pipeline using **Apache Airflow**. The ETL pipeline extracts information from three different data sources: a **CSV file**, and a **PostgreSQL database**. After performing transformations, the data is merged and stored into **Google Drive** as a CSV file and loaded in a database. The final step involves creating a **dashboard** to visualize the data stored in the database.
@@ -47,9 +47,10 @@ This project demonstrates how to build an ETL (Extract, Transform, Load) pipelin
 
 ## Prerequisites
 
-- **Python 3**
-- **Apache Airflow**
-- **PostgreSQL**
+- **Python 3** 🐍
+- **Apache Airflow** 🔄 
+- **PostgreSQL** 🗃️
+- **Virtual environment** 🌍
 
 ## Setup Instructions
 
@@ -164,7 +165,7 @@ You can now access the Airflow UI using the generated **credentials**.
    
    - Visualize the data using the dashboard created from the data stored in the database.
 
-
+---
 
 # Connect Power BI to PostgreSQL
 
@@ -190,7 +191,7 @@ Do you want to create your own dashboard? You’ll probably need to do this:
 6. **Select the Adapter Type:**
    - In the "Attached to" field, select "Bridged Adapter."
 
----
+
 
 ## Open Power BI
 
@@ -198,17 +199,20 @@ Do you want to create your own dashboard? You’ll probably need to do this:
 
 8. **Get Data:**
    - On the home screen, click "Get Data."
-
+     
+   ![image](https://github.com/caroldvarela/images/blob/main/Dashboard_1.png)
 9. **Select PostgreSQL:**
    - In the "Get Data" window, choose "PostgreSQL Database" and click "Connect."
 
+   ![image](https://github.com/caroldvarela/images/blob/main/Dashboard_2.png)
 10. **Configure the Connection:**
     - In the connection dialog, enter the following information:
       - **Server:** `server_ip:port` (by default, `localhost:5432` if connecting to your local machine).
       - **Database:** The name of the database you want to connect to.
+   ![image](https://github.com/caroldvarela/images/blob/main/workshop2-1.png)
 
 11. **Authentication:**
     - Select the authentication method "Database" and enter your PostgreSQL username and password.
-
+   ![image](https://github.com/caroldvarela/images/blob/main/workshop2-2.png)
 12. **Load Data:**
     - Click "OK," and if the connection is successful, you will see the available tables in your database. Select the tables you want to import and click "Load."
