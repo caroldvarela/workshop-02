@@ -141,6 +141,7 @@ I will also give you a brief guide on how to install what you need!
 
 - **Create a folder in your Drive and share it with your project’s service account as an editor:**  
    - In the link of the folder, you’ll find the `PARENT_FOLDER_ID`. 
+   
    ![image](https://github.com/caroldvarela/images/blob/main/apidrive.png)
   
 
