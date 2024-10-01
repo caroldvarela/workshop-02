@@ -5,6 +5,8 @@ This project demonstrates how to build an ETL (Extract, Transform, Load) pipelin
 
 ![image](https://github.com/caroldvarela/images/blob/main/workshop2.png)
 
+This project is developed within a virtual machine running **Ubuntu**. The dashboard has been created using Power BI on a Windows machine.
+
 ## Data Sources
 1. **Spotify Dataset 🎶🟩**: Data to be extracted, transformed, and loaded using Python and Apache Airflow.
 2. **Grammys Dataset 🏆**: To be loaded into the database, read, transformed, and merged with the Spotify dataset using Airflow.
