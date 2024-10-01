@@ -138,6 +138,9 @@ I will also give you a brief guide on how to install what you need!
 
 - **Place the File in the Project Directory:**
    - Move the `service_account.json` file to your project directory.
+
+- **Create a folder in your Drive and share it with your project’s service account as an editor:**  
+   - In the link of the folder, you’ll find the `PARENT_FOLDER_ID`. 
   
 
 ## Configuration of the .env File
@@ -168,6 +171,12 @@ I will also give you a brief guide on how to install what you need!
  - **Set the Airflow Home Environment Variable:**  
    ```bash
    export AIRFLOW_HOME=~/airflow
+   ```
+
+ - **Configure the airflow.cfg File**  
+   - The `airflow.cfg` file is located in the directory specified by `AIRFLOW_HOME`. To modify the `dags_folder`, set it to the path of your `dag.py` file:
+   ```ini
+   dags_folder = /path/to/your/dag
    ```
 
  - **Initialize the Airflow Database:**  
