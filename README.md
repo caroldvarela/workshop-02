@@ -6,8 +6,8 @@ This project demonstrates how to build an ETL (Extract, Transform, Load) pipelin
 ![image](https://github.com/caroldvarela/images/blob/main/workshop2.png)
 
 ## Data Sources
-1. **Spotify Dataset**: Data to be extracted, transformed, and loaded using Python and Apache Airflow.
-2. **Grammys Dataset**: To be loaded into the database, read, transformed, and merged with the Spotify dataset using Airflow.
+1. **Spotify Dataset 🎶🟩**: Data to be extracted, transformed, and loaded using Python and Apache Airflow.
+2. **Grammys Dataset 🏆**: To be loaded into the database, read, transformed, and merged with the Spotify dataset using Airflow.
 
 ## Key Features
 
@@ -141,7 +141,7 @@ I will also give you a brief guide on how to install what you need!
 
 - **Create a folder in your Drive and share it with your project’s service account as an editor:**  
    - In the link of the folder, you’ll find the `PARENT_FOLDER_ID`. 
-   
+
    ![image](https://github.com/caroldvarela/images/blob/main/apidrive.png)
   
 
