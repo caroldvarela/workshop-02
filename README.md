@@ -141,6 +141,7 @@ I will also give you a brief guide on how to install what you need!
 
 - **Create a folder in your Drive and share it with your project’s service account as an editor:**  
    - In the link of the folder, you’ll find the `PARENT_FOLDER_ID`. 
+   ![image](https://github.com/caroldvarela/images/blob/main/apidrive.png)
   
 
 ## Configuration of the .env File
@@ -174,7 +175,7 @@ I will also give you a brief guide on how to install what you need!
    ```
 
  - **Configure the airflow.cfg File**  
-   - The `airflow.cfg` file is located in the directory specified by `AIRFLOW_HOME`. To modify the `dags_folder`, set it to the path of your `dag.py` file:
+   The `airflow.cfg` file is located in the directory specified by `AIRFLOW_HOME`. To modify the `dags_folder`, set it to the path of your `dag.py` file:
    ```ini
    dags_folder = /path/to/your/dag
    ```
