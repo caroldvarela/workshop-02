@@ -29,9 +29,9 @@ This project demonstrates how to build an ETL (Extract, Transform, Load) pipelin
 ├── models
 │   └── model.py
 ├── notebooks
-│   ├── 001_data_migration_grammy.ipynb
-│   ├── 002_EDA_spotify.ipynb
-│   └── 003_EDA_grammy.ipynb
+│   ├── 000_data_migration_grammy.ipynb
+│   ├── 001_EDA_spotify.ipynb
+│   └── 002_EDA_grammy.ipynb
 ├── src
 │   ├── extract
 │   │   ├── read_grammy.py
