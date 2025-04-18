@@ -1,7 +1,7 @@
 # Workshop # 2 ETL
 
 # Introduction
-This project demonstrates how to build an ETL (Extract, Transform, Load) pipeline using **Apache Airflow**. The ETL pipeline extracts information from three different data sources: a **CSV file**, and a **PostgreSQL database**. After performing transformations, the data is merged and stored into **Google Drive** as a CSV file and loaded in a database. The final step involves creating a **dashboard** to visualize the data stored in the database.
+This project demonstrates how to build an ETL (Extract, Transform, Load) pipeline using **Apache Airflow**. The ETL pipeline extracts information from two different data sources: a **CSV file**, and a **PostgreSQL database**. After performing transformations, the data is merged and stored into **Google Drive** as a CSV file and loaded in a database. The final step involves creating a **dashboard** to visualize the data stored in the database.
 
 ![image](https://github.com/caroldvarela/images/blob/main/workshop2.png)
 
